@@ -34,7 +34,6 @@
             color: var(--text-dark);
         }
 
-        /* ── Layout ── */
         .app-shell {
             display: flex;
             height: 100vh;
@@ -85,7 +84,6 @@
             padding: 10px 16px 6px;
         }
 
-        /* ── Tool Buttons ── */
         .tool-btn {
             display: flex;
             flex-direction: column;
@@ -101,7 +99,7 @@
             gap: 2px;
         }
 
-        .tool-btn:hover:not(:disabled) {
+        .tool-btn:hover {
             background: rgba(255,255,255,0.1);
             border-left-color: rgba(255,255,255,0.4);
         }
@@ -109,10 +107,6 @@
         .tool-btn.active {
             background: rgba(255,255,255,0.15);
             border-left-color: #ffffff;
-        }
-
-        .tool-btn:disabled {
-            cursor: not-allowed;
         }
 
         .btn-step {
@@ -124,7 +118,7 @@
         }
 
         .tool-btn.active .btn-step,
-        .tool-btn:hover:not(:disabled) .btn-step {
+        .tool-btn:hover .btn-step {
             color: rgba(255,255,255,0.65);
         }
 
@@ -135,18 +129,10 @@
             line-height: 1.2;
         }
 
-        .tool-btn:disabled .btn-name {
-            color: var(--placeholder-text);
-        }
-
         .btn-desc {
             font-size: 0.72rem;
             color: rgba(255,255,255,0.5);
             line-height: 1.3;
-        }
-
-        .tool-btn:disabled .btn-desc {
-            color: var(--placeholder-text);
         }
 
         .btn-badge {
@@ -162,14 +148,6 @@
             color: rgba(255,255,255,0.4);
         }
 
-        .sidebar-footer {
-            padding: 14px 16px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.68rem;
-            color: rgba(255,255,255,0.3);
-            line-height: 1.4;
-        }
-
         /* ── Main Content ── */
         .main-content {
             flex: 1;
@@ -179,60 +157,7 @@
             position: relative;
         }
 
-        /* ── Welcome Screen ── */
-        .welcome-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            gap: 16px;
-            padding: 40px;
-            text-align: center;
-            background: var(--bg-light);
-        }
-
-        .welcome-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 4px;
-        }
-
-        .welcome-icon svg {
-            width: 34px;
-            height: 34px;
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 1.75;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .welcome-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .welcome-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-mid);
-            max-width: 360px;
-            line-height: 1.6;
-        }
-
-        .welcome-hint {
-            font-size: 0.8rem;
-            color: var(--placeholder-text);
-            margin-top: 8px;
-        }
-
-        /* ── Tool Frame ── */
+        /* ── Step 1 iframe ── */
         .tool-frame {
             display: none;
             width: 100%;
@@ -243,6 +168,169 @@
 
         .tool-frame.visible {
             display: block;
+        }
+
+        /* ── Inline Step Panels (Steps 2–5) ── */
+        .step-panel {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
+            background: var(--bg-light);
+        }
+
+        .step-panel.visible {
+            display: flex;
+        }
+
+        .step-panel-header {
+            padding: 28px 32px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .step-panel-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .step-panel-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .step-panel-desc {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        .step-panel-body {
+            padding: 24px 32px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* ── Substep Cards ── */
+        .substep-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .substep-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .substep-number {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .substep-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .substep-instructions {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            padding-left: 36px;
+        }
+
+        /* ── SharePoint Link Button ── */
+        /* TO ADD A LINK: replace the href="#" value with your SharePoint URL */
+        .sp-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .sp-link-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .sp-link-btn svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* ── Tracker Button ── */
+        /* TO ADD A LINK: replace the href="#" value with your tracker URL */
+        .tracker-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .tracker-link-btn:hover {
+            background: #006666;
+        }
+
+        .tracker-link-btn svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .substep-footer {
+            padding-left: 36px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
         }
     </style>
 </head>
@@ -255,43 +343,41 @@
 
         <div class="sidebar-header">
             <div class="app-title">Beal University</div>
-            <div class="app-subtitle">Hub &amp Spoke<br>Workflow Tools</div>
+            <div class="app-subtitle">Hub &amp; Spoke<br>Workflow Tools</div>
         </div>
 
         <nav class="sidebar-nav">
             <div class="nav-section-label">Workflow Steps</div>
 
-            <!-- Step 1 — active tool -->
-            <button class="tool-btn active" onclick="loadTool('syllabusbuilder.html', this)">
+            <button class="tool-btn active" onclick="loadStep1(this)">
                 <span class="btn-step">Step 1</span>
                 <span class="btn-name">Weekly Plan</span>
                 <span class="btn-desc">Export weekly tables &amp; lesson templates.</span>
                 <span class="btn-badge">Timeline</span>
             </button>
 
-            <!-- Placeholders for future steps -->
-            <button class="tool-btn" disabled>
+            <button class="tool-btn" onclick="loadPanel('panel-step2', this)">
                 <span class="btn-step">Step 2</span>
                 <span class="btn-name">Articulate Design</span>
                 <span class="btn-desc">Build weekly Articulate lessons based on templates.</span>
                 <span class="btn-badge">Timeline</span>
             </button>
 
-            <button class="tool-btn" disabled>
+            <button class="tool-btn" onclick="loadPanel('panel-step3', this)">
                 <span class="btn-step">Step 3</span>
                 <span class="btn-name">SME Review</span>
                 <span class="btn-desc">Assign lesson review &amp; videos to SMEs.</span>
                 <span class="btn-badge">Timeline</span>
             </button>
 
-            <button class="tool-btn" disabled>
+            <button class="tool-btn" onclick="loadPanel('panel-step4', this)">
                 <span class="btn-step">Step 4</span>
                 <span class="btn-name">Video Integration</span>
                 <span class="btn-desc">Make lesson edits &amp; integrate videos.</span>
                 <span class="btn-badge">Timeline</span>
             </button>
 
-            <button class="tool-btn" disabled>
+            <button class="tool-btn" onclick="loadPanel('panel-step5', this)">
                 <span class="btn-step">Step 5</span>
                 <span class="btn-name">CTL Handoff</span>
                 <span class="btn-desc">Send weekly tables &amp; Articulate links to CTL.</span>
@@ -300,32 +386,12 @@
 
         </nav>
 
-
     </aside>
 
     <!-- ── Main Content ── -->
     <main class="main-content">
 
-        <!-- Welcome screen (hidden by default) -->
-        <div class="welcome-screen" id="welcome" style="display:none">
-            <div class="welcome-icon">
-                <svg viewBox="0 0 24 24">
-                    <!-- simple document + checkmark icon -->
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="9" y1="13" x2="15" y2="13"/>
-                    <line x1="9" y1="17" x2="13" y2="17"/>
-                </svg>
-            </div>
-            <div class="welcome-title">Nursing Curriculum Toolkit</div>
-            <div class="welcome-subtitle">
-                A collection of workflow tools to support syllabus development
-                and course design for nursing programs.
-            </div>
-            <div class="welcome-hint">Select a step from the sidebar to get started.</div>
-        </div>
-
-        <!-- Tool loaded here via iframe -->
+        <!-- Step 1 iframe — untouched -->
         <iframe
             id="tool-frame"
             class="tool-frame visible"
@@ -334,23 +400,341 @@
             allowfullscreen
         ></iframe>
 
+
+        <!-- ═══════════════════════════════════════
+             STEP 2 — Articulate Design
+             ═══════════════════════════════════════ -->
+        <div class="step-panel" id="panel-step2">
+            <div class="step-panel-header">
+                <div class="step-panel-eyebrow">Step 2</div>
+                <div class="step-panel-title">Articulate Design</div>
+                <!-- EDIT: update this description as needed -->
+                <div class="step-panel-desc">Build weekly Articulate lessons based on the templates generated in Step 1. Complete each substep in order and open the corresponding SharePoint folder as needed.</div>
+            </div>
+            <div class="step-panel-body">
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">1</div>
+                        <!-- EDIT: substep title -->
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <!-- EDIT: instruction text -->
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">2</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">3</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">4</div>
+                        <!-- EDIT: substep title -->
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <!-- EDIT: instruction text -->
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the tracker.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your tracker URL -->
+                        <a class="tracker-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open tracker
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════
+             STEP 3 — SME Review
+             ═══════════════════════════════════════ -->
+        <div class="step-panel" id="panel-step3">
+            <div class="step-panel-header">
+                <div class="step-panel-eyebrow">Step 3</div>
+                <div class="step-panel-title">SME Review</div>
+                <!-- EDIT: update this description as needed -->
+                <div class="step-panel-desc">Assign lesson content and video tasks to subject matter experts. Track review progress and collect feedback before moving to video integration.</div>
+            </div>
+            <div class="step-panel-body">
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">1</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">2</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">3</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">4</div>
+                        <!-- EDIT: substep title -->
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <!-- EDIT: instruction text -->
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the tracker.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your tracker URL -->
+                        <a class="tracker-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open tracker
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════
+             STEP 4 — Video Integration
+             ═══════════════════════════════════════ -->
+        <div class="step-panel" id="panel-step4">
+            <div class="step-panel-header">
+                <div class="step-panel-eyebrow">Step 4</div>
+                <div class="step-panel-title">Video Integration</div>
+                <!-- EDIT: update this description as needed -->
+                <div class="step-panel-desc">Apply SME feedback to Articulate lessons and embed the recorded videos. Finalize each lesson before handing off to CTL.</div>
+            </div>
+            <div class="step-panel-body">
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">1</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">2</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">3</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">4</div>
+                        <!-- EDIT: substep title -->
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <!-- EDIT: instruction text -->
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the tracker.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your tracker URL -->
+                        <a class="tracker-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open tracker
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════
+             STEP 5 — CTL Handoff
+             ═══════════════════════════════════════ -->
+        <div class="step-panel" id="panel-step5">
+            <div class="step-panel-header">
+                <div class="step-panel-eyebrow">Step 5</div>
+                <div class="step-panel-title">CTL Handoff</div>
+                <!-- EDIT: update this description as needed -->
+                <div class="step-panel-desc">Send finalized weekly tables and Articulate lesson links to the Center for Teaching and Learning. Complete all substeps to close out the workflow.</div>
+            </div>
+            <div class="step-panel-body">
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">1</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">2</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">3</div>
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the folder.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your SharePoint URL -->
+                        <a class="sp-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open SharePoint folder
+                        </a>
+                    </div>
+                </div>
+
+                <div class="substep-card">
+                    <div class="substep-card-header">
+                        <div class="substep-number">4</div>
+                        <!-- EDIT: substep title -->
+                        <div class="substep-title">Substep title goes here</div>
+                    </div>
+                    <!-- EDIT: instruction text -->
+                    <div class="substep-instructions">Instruction text for this substep goes here. Describe what the user needs to do before opening the tracker.</div>
+                    <div class="substep-footer">
+                        <!-- EDIT: replace href="#" with your tracker URL -->
+                        <a class="tracker-link-btn" href="#" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open tracker
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
 </div>
 
 <script>
-    function loadTool(src, btn) {
-        const frame = document.getElementById('tool-frame');
-        const welcome = document.getElementById('welcome');
-
-        // Update active state
+    function hideAll() {
+        document.getElementById('tool-frame').classList.remove('visible');
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('visible'));
         document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    }
 
-        // Load the tool
-        frame.src = src;
-        frame.classList.add('visible');
-        welcome.style.display = 'none';
+    function loadStep1(btn) {
+        hideAll();
+        btn.classList.add('active');
+        document.getElementById('tool-frame').classList.add('visible');
+    }
+
+    function loadPanel(panelId, btn) {
+        hideAll();
+        btn.classList.add('active');
+        document.getElementById(panelId).classList.add('visible');
     }
 </script>
 
