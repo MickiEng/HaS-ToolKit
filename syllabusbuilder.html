@@ -1280,7 +1280,7 @@
 
     async function generateLessonTemplate(weekIndex) {
         const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType,
-                BorderStyle, WidthType, LevelFormat, convertInchesToTwip } = docx;
+                BorderStyle, WidthType, LevelFormat, convertInchesToTwip, ExternalHyperlink } = docx;
 
         const week = syllabusData.weeks[weekIndex];
         const wNum = weekIndex + 1;
@@ -1331,12 +1331,27 @@
             ],
         }));
 
-        // Design Hub line
+        // Instructions line
+        children.push(new Paragraph({
+            spacing: { before: 60, after: 60 },
+            children: [
+                new TextRun({ text: "Instructions: ", bold: true, font: "Arial", size: 22, color: "333333" }),
+                new ExternalHyperlink({
+                    link: "https://bealcollege.sharepoint.com/:f:/s/SchoolofNursingTeam/IgB9JEdwi70YQahTkf9uw-OvAajS7RnAJnWwFFWZ_ZvUFIA?e=S1phuQ",
+                    children: [new TextRun({ text: "https://bealcollege.sharepoint.com/:f:/s/SchoolofNursingTeam/IgB9JEdwi70YQahTkf9uw-OvAajS7RnAJnWwFFWZ_ZvUFIA?e=S1phuQ", font: "Arial", size: 22, color: "0563C1", underline: {} })],
+                }),
+            ],
+        }));
+
+        // Video Dropbox line
         children.push(new Paragraph({
             spacing: { before: 60, after: 160 },
             children: [
-                new TextRun({ text: "Design Hub: ", bold: true, font: "Arial", size: 22, color: "333333" }),
-                new TextRun({ text: "sharepoint.com/video-design-PPT-template", font: "Arial", size: 22, color: "333333" }),
+                new TextRun({ text: "Video Dropbox: ", bold: true, font: "Arial", size: 22, color: "333333" }),
+                new ExternalHyperlink({
+                    link: "https://bealcollege.sharepoint.com/:f:/s/SchoolofNursingTeam/IgC8sHjnrB-1RII0x5n77oqmAXabM9xSyxNbNrEoGsu4pPo?e=xDVk5W",
+                    children: [new TextRun({ text: "https://bealcollege.sharepoint.com/:f:/s/SchoolofNursingTeam/IgC8sHjnrB-1RII0x5n77oqmAXabM9xSyxNbNrEoGsu4pPo?e=xDVk5W", font: "Arial", size: 22, color: "0563C1", underline: {} })],
+                }),
             ],
         }));
 
@@ -1377,9 +1392,17 @@
                     });
                 }
 
+                // Articulate Review Link line
+                children.push(new Paragraph({
+                    spacing: { before: 120, after: 60 },
+                    children: [
+                        new TextRun({ text: "Articulate Review Link: ", bold: true, font: "Arial", size: 22, color: "333333" }),
+                    ],
+                }));
+
                 // Video Topic line
                 children.push(new Paragraph({
-                    spacing: { before: 120, after: 200 },
+                    spacing: { before: 60, after: 200 },
                     children: [
                         new TextRun({ text: "Video Concept: ", bold: true, font: "Arial", size: 22, color: "333333" }),
                         new TextRun({ text: "", font: "Arial", size: 22 }),
