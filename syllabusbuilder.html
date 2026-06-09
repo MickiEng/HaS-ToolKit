@@ -1153,7 +1153,7 @@
         const link = document.createElement('a');
         const cleanTitle = (syllabusData.courseName || 'course').replace(/[^a-z0-9]/gi, '_').toLowerCase();
         link.href = url;
-        link.download = `syllabus_${cleanTitle}.docx`;
+        link.download = `tables_${cleanTitle}.docx`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
